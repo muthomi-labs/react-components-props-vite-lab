@@ -1,15 +1,35 @@
-// Article — displays a single blog post card
-function Article({ title, date, preview, tag }) {
+import PropTypes from "prop-types";
+
+function Article({
+  title,
+  date = "January 1, 1970",
+  preview,
+  tag,
+}) {
   return (
     <article className="article-card">
       <div className="article-top">
         <span className="article-tag">{tag}</span>
-        <span className="article-date">{date}</span>
+
+        <small className="article-date">
+          {date}
+        </small>
       </div>
+
       <h3 className="article-title">{title}</h3>
-      <p className="article-preview">{preview}</p>
+
+      <p className="article-preview">
+        {preview}
+      </p>
     </article>
   );
 }
+
+Article.propTypes = {
+  title: PropTypes.string,
+  date: PropTypes.string,
+  preview: PropTypes.string,
+  tag: PropTypes.string,
+};
 
 export default Article;
